@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply bg-default hover:bg-default text-white py-2 px-3 m-1 rounded-[20px] text-base;
+  }
+
+  .btn-sm {
+    @apply bg-default hover:bg-default text-white py-1 px-2 m-1 rounded-[20px] text-sm;
+  }
+
+  .btn-lg {
+    @apply bg-default hover:bg-default text-white py-3 px-4 m-1 rounded-[20px] text-lg;
+  }
+}
