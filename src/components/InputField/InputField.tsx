@@ -1,8 +1,8 @@
-import React, { InputHTMLAttributes } from "react";
+import { FC, InputHTMLAttributes } from "react";
 import "./InputField.css";
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
-const InputField: React.FC<InputProps> = (props) => {
-  return <input {...props} />;
+const InputField: FC<InputProps> = (props) => {
+  return <input {...props} className={`input ${props.className}`} />;
 };
 
 export default InputField;

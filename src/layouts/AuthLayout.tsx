@@ -8,7 +8,7 @@ const AuthLayout: React.FC<AuthProps> = ({ children }) => {
   return (
     <div
       id="auth-container"
-      className="flex justify-center items-center border-4 border-success h-[100dvh]"
+      className="min-w-[50dvh] flex justify-center items-center border-4 border-success h-[100dvh]"
     >
       {children}
     </div>
