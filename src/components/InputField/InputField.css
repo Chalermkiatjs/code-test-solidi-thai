@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 @layer components {
-  input {
-    @apply m-2 border-0 ring-1 ring-slate-light ring-inset rounded-full border-slate-light px-4 py-1 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-default;
+  .input {
+    @apply w-3/4;
+    @apply m-2 px-4 py-1;
+    @apply rounded-full border-slate-light;
+    @apply ring-1 ring-slate-light ring-inset;
+    @apply focus:outline-none focus:ring-2 focus:ring-inset focus:ring-default;
   }
 }

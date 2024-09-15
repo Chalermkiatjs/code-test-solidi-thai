@@ -1,8 +1,8 @@
-import React from "react";
+import { FC } from "react";
 
 interface NavbarProps {}
 
-const Navbar: React.FC<NavbarProps> = (props) => {
+const Navbar: FC<NavbarProps> = (props) => {
   return <div></div>;
 };
 
