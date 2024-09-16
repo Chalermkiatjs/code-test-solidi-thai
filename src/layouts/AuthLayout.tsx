@@ -1,14 +1,14 @@
-import React from "react";
+import { FC } from "react";
 
 interface AuthProps {
   children?: React.ReactNode;
 }
 
-const AuthLayout: React.FC<AuthProps> = ({ children }) => {
+const AuthLayout: FC<AuthProps> = ({ children }) => {
   return (
     <div
       id="auth-container"
-      className="min-w-[50dvh] flex justify-center items-center border-4 border-success h-[100dvh]"
+      className="min-w-[50dvh] h-screen flex justify-center items-center border-4 border-success"
     >
       {children}
     </div>

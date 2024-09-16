@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  font-family: ""
+}
+
 body {
   background-color: theme(colors.slate.light);
 }

@@ -4,14 +4,23 @@
 
 @layer components {
   .btn {
-    @apply bg-default hover:bg-default text-white py-2 px-3 m-1 rounded-[20px] text-base;
+    @apply py-2 px-3 m-1;
+    @apply rounded-[20px];
+    @apply bg-default hover:bg-default;
+    @apply text-white text-base;
   }
 
   .btn-sm {
-    @apply bg-default hover:bg-default text-white py-1 px-2 m-1 rounded-[20px] text-sm;
+    @apply py-2 px-3 m-1;
+    @apply rounded-[20px];
+    @apply bg-default hover:bg-default;
+    @apply text-white text-sm;
   }
 
   .btn-lg {
-    @apply bg-default hover:bg-default text-white py-3 px-4 m-1 rounded-[20px] text-lg;
+    @apply py-2 px-3 m-1;
+    @apply rounded-[20px];
+    @apply bg-default hover:bg-default;
+    @apply text-white text-lg;
   }
 }
