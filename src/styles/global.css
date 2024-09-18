@@ -7,5 +7,5 @@ html {
 }
 
 body {
-  background-color: theme(colors.slate.light);
+  background-color: theme(colors.slate.100);
 }

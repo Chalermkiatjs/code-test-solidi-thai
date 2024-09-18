@@ -1,10 +1,10 @@
 import { FC } from "react";
 
-interface AuthProps {
+interface AuthLayoutProps {
   children?: React.ReactNode;
 }
 
-const AuthLayout: FC<AuthProps> = ({ children }) => {
+const AuthLayout: FC<AuthLayoutProps> = ({ children }) => {
   return (
     <div
       id="auth-container"

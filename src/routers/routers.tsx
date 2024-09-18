@@ -1,14 +1,7 @@
-import SignIn from "pages/Auth/SignIn";
-import Home from "pages/Home/Home";
+import { Navigation } from "configurations/navigation/navigation";
+import { userMenu } from "configurations/navigation/userMenu";
 import { createBrowserRouter } from "react-router-dom";
 
-export const routers = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/sign-in",
-    element: <SignIn />,
-  },
-]);
+export const routers = createBrowserRouter(Navigation);
+
+export const userMenuRouters = createBrowserRouter(userMenu)
