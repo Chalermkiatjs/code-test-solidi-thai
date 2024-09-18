@@ -36,6 +36,7 @@ module.exports = {
         DEFAULT: "#FFFFFF",
       },
       slate: {
+        ...colors.slate,
         light: "#e2e8f0",
         DEFAULT: "#1e293b",
         dark: "#020617",

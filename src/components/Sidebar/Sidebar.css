@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .side-bar-container {
+    @apply h-full overflow-x-hidden overflow-y-auto;
+    @apply bg-white w-[260px];
+    @apply before:h-[50px] before:w-[25px];
+    @apply before:content-[''] before:absolute before:top-0 before:right-[-25px];
+    @apply before:-z-10 before:bg-transparent before:rounded-tl-3xl;
+    @apply before:shadow-[0_-25px_0_0_white];
+  }
+
+  .list {
+    @apply my-2 px-3;
+  }
+
+  .list-item {
+    @apply p-2 my-1;
+    @apply bg-transparent bg-opacity-100  hover:bg-gray-400 hover:bg-opacity-10;
+    @apply rounded-md;
+    @apply transition ease-in-out duration-300;
+  }
+}
