@@ -4,10 +4,10 @@
 
 @layer components {
   .card {
-    @apply min-w-14 min-h-8 h-fit w-fit;
+    @apply min-w-14 min-h-8;
     @apply p-3;
     @apply bg-white;
-    @apply shadow-md;
+    @apply shadow-sm;
     @apply rounded-xl;
   }
 }

@@ -1,36 +1,52 @@
 import { ButtonHTMLAttributes, FC, useEffect, useState } from "react";
 import "./Button.css";
 
-type ButtonSizeType = "small" | "medium" | "large" | "transparent" | string;
-type ButtonColorType = "success" | "waring" | "error" | "info" | "default" | string;
+type ButtonSizeType = "small" | "medium" | "large";
+type ButtonColorType = "success" | "waring" | "error" | "info" | "default";
+type ButtonVariant = "outlined" | "contained" | "text";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSizeType;
   color?: ButtonColorType;
+  variant?: ButtonVariant;
 }
 
 const Button: FC<ButtonProps> = (props) => {
-  const { size = "medium", color = "default" } = props;
-  const [buttonSize, setButtonSize] = useState<string | undefined>("");
-  const [buttonColor, setButtonColor] = useState<string | undefined>("");
+  const {
+    size = "medium",
+    color = "default",
+    className = "",
+    children,
+    variant,
+  } = props;
+  const [buttonSize, setButtonSize] = useState<string | undefined>("medium");
+  const [buttonColor, setButtonColor] = useState<{ [key: string]: string }>({
+    color: "",
+    hover: "",
+  });
+  const [buttonTextColor, setButtonTextColor] = useState<string | undefined>(
+    "text-white"
+  );
 
   useEffect(() => {
-    setButtonColor(color);
-  }, [color]);
-
-  useEffect(() => {
+    if (variant !== "text") {
+      setButtonTextColor("text-white");
+      setButtonColor({ color, hover: color });
+    } else {
+      setButtonTextColor("text-slate-700");
+      setButtonColor({ color: "transparent", hover: "slate-200" });
+    }
     setButtonSize((prev) =>
       prev === "small" ? "btn-sm" : prev === "large" ? "btn-lg" : "btn"
     );
-  }, [size]);
+  }, [color, size]);
+  
   return (
     <button
       {...props}
-      className={`${buttonSize} bg-${buttonColor} hover:bg-${buttonColor}-dark ${
-        props.className || ""
-      }`}
+      className={`${buttonSize} ${buttonTextColor} bg-${buttonColor.color} hover:bg-${buttonColor.hover}-dark ${className}`}
     >
-      {props.children}
+      {children}
     </button>
   );
 };

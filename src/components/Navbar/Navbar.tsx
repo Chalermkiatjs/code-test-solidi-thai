@@ -30,7 +30,7 @@ const Navbar: FC<NavbarProps> = (props) => {
       <div className="flex items-center relative">
         <div className="mr-4">
           <Button
-            color="transparent"
+            variant="text"
             className="text-slate-700 hover:bg-slate-200 rounded-full p-2"
           >
             <IoIosNotifications size={25} />
@@ -38,7 +38,7 @@ const Navbar: FC<NavbarProps> = (props) => {
         </div>
         <div ref={menuRef}>
           <Button
-            color="transparent"
+            variant="text"
             onClick={handleOpenMenu}
             className=" flex items-center py-2 rounded-md text-slate-700 hover:bg-slate-200"
             size="small"
@@ -53,8 +53,8 @@ const Navbar: FC<NavbarProps> = (props) => {
             <div
               className={
                 isOpenMenu
-                  ? "-rotate-180 transition ease-in-out duration-300"
-                  : "-rotate-0 transition ease-in-out duration-300"
+                  ? "-rotate-180 text-slate-700 transition ease-in-out duration-300"
+                  : "-rotate-0 text-slate-700 transition ease-in-out duration-300"
               }
             >
               <IoIosArrowDropdownCircle />
