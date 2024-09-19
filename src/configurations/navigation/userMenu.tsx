@@ -4,7 +4,7 @@ import { FaUser } from "react-icons/fa";
 export const userMenu = [
   {
     label: "Profile",
-    path: "/profile",
+    path: "/",
     icon:<FaUser size={15}/>,
   },
   {
