@@ -1,10 +1,10 @@
-import React, { FC, LabelHTMLAttributes } from "react";
+import React from "react";
 
 type InputProps = {
   children:React.ReactNode
   className?:string
 }
-const InputLabel: FC<InputProps> = (props) => {
+const InputLabel: React.FC<InputProps> = (props) => {
   return (
     <label {...props} className={`m-1 ${props.className} `}>
       {props.children}

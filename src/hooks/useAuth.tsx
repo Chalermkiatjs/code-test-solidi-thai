@@ -41,7 +41,6 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const saveProfile = (profile: AuthContextProps["profile"]) => {
     setProfile(profile);
-    // localStorage.setItem("profile", JSON.stringify({ name, username, role }));
   };
 
   const saveToken = (token: string) => {

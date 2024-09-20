@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { useState } from "react";
 import { TableColumnType } from "shared/types/TableColumnType";
 import InputField from "components/InputField/InputField";
 

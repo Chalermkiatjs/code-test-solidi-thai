@@ -1,11 +1,11 @@
-import { FC, InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes } from "react";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: boolean;
   helperText?: string;
   label?: string;
 }
-const InputField: FC<InputProps> = ({
+const InputField: React.FC<InputProps> = ({
   label,
   className,
   error,

@@ -10,6 +10,7 @@ import { UserResponseType } from "shared/types/UserResponseType";
 import { useAuth } from "hooks/useAuth";
 import { setAuthStorage } from "helpers/authStorage";
 import { setProfileStorage } from "helpers/profileStorage";
+import { setPageLoadStorage } from "helpers/pageLoadStorage";
 
 const SignIn: FC = () => {
   const [username, setUsername] = useState<string>("Developer");
@@ -63,6 +64,7 @@ const SignIn: FC = () => {
                 role: matchedData.role,
               })
             );
+            setPageLoadStorage("true")
             setLoading(true);
             setTimeout(() => {
               navigate("/");
