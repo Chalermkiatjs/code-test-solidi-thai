@@ -22,8 +22,4 @@ export const UserColumn: TableColumnType[] = [
     field: "role",
     headerName: "Role",
   },
-  {
-    field: "action",
-    headerName: "Actions",
-  },
 ];
