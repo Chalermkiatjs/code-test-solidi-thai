@@ -1,24 +1,19 @@
-import Card from "components/Card/Card";
-import React, { ChangeEvent, ChangeEventHandler, FC, useState } from "react";
-import "./Table.css";
+import React, { FC, useState } from "react";
 import { TableColumnType } from "shared/types/TableColumnType";
 import InputField from "components/InputField/InputField";
 
-type TableType = {
-  height: "h-full" | string;
-  width: "w-full" | string;
-};
-
-interface TableProps<T> extends React.TableHTMLAttributes<HTMLTableElement> {
+interface TableProps<T> {
   title?: string;
   searchBar?: boolean;
   columns: TableColumnType[];
   rows: T[];
-  height?: TableType["height"];
-  width?: TableType["width"];
+  className?: string;
+  height?: "h-full" | string;
+  width?: "w-full" | string;
+  onRowClick?: (row: T) => void;
 }
 
-const Table: FC<TableProps<any>> = ({
+const Table = <T extends object>({
   title,
   searchBar = true,
   columns,
@@ -26,13 +21,19 @@ const Table: FC<TableProps<any>> = ({
   className = "",
   height = "h-[520px]",
   width = "w-full",
-}) => {
+  onRowClick = () => null,
+}: TableProps<T>) => {
   const [filters, setFilters] = useState<string>("");
-
+  const [rowSelectedIndex, setRowSelectedIndex] = useState<number | string>();
   const handleChangeFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (rows.length > 0 && columns.length > 0) {
       setFilters(e.target.value);
     }
+  };
+
+  const handleRowClick = (row: T, index: number | string) => {
+    onRowClick(row);
+    setRowSelectedIndex(index);
   };
 
   return (
@@ -53,15 +54,17 @@ const Table: FC<TableProps<any>> = ({
       <div
         className={`relative overflow-auto rounded-lg max-h-[100%] border-gray-300 ${width} ${height} ${className}`}
       >
-        <table className={`tb-container min-w-full table-fixed`}>
+        <table className={`bg-white min-w-full table-fixed`}>
           <thead>
             <tr>
               {columns.map((column) => (
                 <th
                   scope="col"
-                  className={`max-w-[${column.maxWidth || 0}px] min-w-[${
-                    column.minWidth || 0
-                  }px] ${column.width ? "w-[" + column.width + "px]" : ""}`}
+                  className={`sticky top-0 bg-slate-400 px-2 py-2 font-semibold max-w-[${
+                    column.maxWidth || 0
+                  }px] min-w-[${column.minWidth || 0}px] ${
+                    column.width ? "w-[" + column.width + "px]" : ""
+                  }`}
                   key={column.field}
                 >
                   {column.headerName}
@@ -73,21 +76,31 @@ const Table: FC<TableProps<any>> = ({
             {rows
               .filter((row) =>
                 columns.some((column) =>
-                  String(row[column.field])
+                  String(row[column.field as keyof T])
                     .toLowerCase()
                     .includes(filters.toLowerCase())
                 )
               )
               .map((item, index) => (
-                <tr key={index}>
+                <tr
+                  className={`${
+                    rowSelectedIndex === index
+                      ? "bg-default hover:bg-default-dark text-white"
+                      : "hover:bg-slate-200"
+                  } h-10`}
+                  key={index}
+                  onClick={() => handleRowClick(item, index)}
+                >
                   {columns.map((column, index) => (
                     <td
-                      className={`max-w-[${column.maxWidth || 0}px] min-w-[${
-                        column.minWidth || 0
-                      }px] ${column.width ? "w-[" + column.width + "px]" : ""}`}
+                      className={`px-2 whitespace-nowrap border-b max-w-[${
+                        column.maxWidth || 0
+                      }px] min-w-[${column.minWidth || 0}px] ${
+                        column.width ? "w-[" + column.width + "px]" : ""
+                      }`}
                       key={index}
                     >
-                      {item[column.field]}
+                      {String(item[column.field as keyof T])}
                     </td>
                   ))}
                 </tr>
@@ -95,7 +108,7 @@ const Table: FC<TableProps<any>> = ({
           </tbody>
         </table>
       </div>
-      <div id="table-footer" className="tb-footer w-fit">
+      <div id="table-footer" className="px-2 mt-2 w-fit">
         <div id="total-display">Total of {rows.length} items</div>
       </div>
     </div>

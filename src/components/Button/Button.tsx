@@ -39,12 +39,12 @@ const Button: FC<ButtonProps> = (props) => {
     setButtonSize((prev) =>
       prev === "small" ? "btn-sm" : prev === "large" ? "btn-lg" : "btn"
     );
-  }, [color, size]);
-  
+  }, [color, size, variant]);
+
   return (
     <button
       {...props}
-      className={`${buttonSize} ${buttonTextColor} bg-${buttonColor.color} hover:bg-${buttonColor.hover}-dark ${className}`}
+      className={`${buttonSize} ${buttonTextColor} bg-${buttonColor.color} hover:bg-${buttonColor.hover}-dark ${className} disabled:bg-slate-500 flex justify-center items-center gap-2`}
     >
       {children}
     </button>

@@ -1,11 +1,18 @@
-import { FC, HTMLAttributes } from "react";
-import "./Card.css";
+import React from "react";
 
-interface CardProps extends HTMLAttributes<HTMLElement> {}
+// interface CardProps extends HTMLAttributes<HTMLElement> {}
 
-const Card: FC<CardProps> = ({ children, className="", ...props }) => {
+type CardProps = {
+  children: React.ReactNode;
+  className?: string;
+};
+
+const Card: React.FC<CardProps> = ({ children, className = "", ...props }) => {
   return (
-    <div {...props} className={`card ${className} `}>
+    <div
+      {...props}
+      className={`min-w-14 min-h-8 p-3 bg-white shadow-sm rounded-xl ${className} `}
+    >
       {children}
     </div>
   );
