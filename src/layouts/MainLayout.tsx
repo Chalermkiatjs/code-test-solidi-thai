@@ -23,7 +23,7 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
     if (!token) {
       navigate("/sign-in");
     }
-  }, [token]);
+  }, [token, navigate]);
 
   return (
     <div
@@ -32,10 +32,18 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
     >
       <Navbar isMobile={isMobile} handleToggleSidebar={handleToggleSidebar} />
       <div id="wrap" className="flex h-[calc(100%-56px)] w-full">
-        <Sidebar isMobile={isMobile} toggleSidebar={toggleSidebar} setToggleSidebar={setToggleSidebar} />
+        <Sidebar
+          isMobile={isMobile}
+          toggleSidebar={toggleSidebar}
+          setToggleSidebar={setToggleSidebar}
+        />
         <div
           id="content-container"
-          className={`p-4  ${isMobile && toggleSidebar ? "w-full md:max-w-full lg:max-w-[calc(100%-260px)]" : "w-full"} overflow-auto`}
+          className={`p-4  ${
+            isMobile && toggleSidebar
+              ? "w-full md:max-w-full lg:max-w-[calc(100%-260px)]"
+              : "w-full"
+          } overflow-auto`}
         >
           {children}
         </div>

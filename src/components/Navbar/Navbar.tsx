@@ -1,7 +1,7 @@
 import Button from "components/Button/Button";
 import { FaUser, FaUserCircle } from "react-icons/fa";
 import { IoIosArrowDropdownCircle, IoIosNotifications } from "react-icons/io";
-import { FC, useRef, useState } from "react";
+import React, {  useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useClickOutside } from "hooks/useClickOutside";
 import { FiLogOut } from "react-icons/fi";
@@ -10,13 +10,14 @@ import { IoLogoOctocat } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { removeAuthStorage } from "helpers/authStorage";
 import { removeProfileStorage } from "helpers/profileStorage";
+import { removePageLoadStorage } from "helpers/pageLoadStorage";
 
 interface NavbarProps {
   handleToggleSidebar: () => void;
   isMobile: boolean;
 }
 
-const Navbar: FC<NavbarProps> = ({ handleToggleSidebar, isMobile }) => {
+const Navbar: React.FC<NavbarProps> = ({ handleToggleSidebar, isMobile }) => {
   const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const { profile } = useAuth();
@@ -38,6 +39,7 @@ const Navbar: FC<NavbarProps> = ({ handleToggleSidebar, isMobile }) => {
     navigate("/sign-in");
     removeAuthStorage()
     removeProfileStorage()
+    removePageLoadStorage()
   };
   return (
     <div

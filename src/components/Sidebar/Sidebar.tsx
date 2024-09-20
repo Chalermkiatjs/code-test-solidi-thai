@@ -1,5 +1,5 @@
 import { Navigation } from "configurations/navigation/navigation";
-import { FC, useRef } from "react";
+import React, { useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Sidebar.css";
 import { useClickOutside } from "hooks/useClickOutside";
@@ -10,7 +10,7 @@ interface SidebarProps {
   setToggleSidebar: (e: boolean) => void;
 }
 
-const Sidebar: FC<SidebarProps> = ({
+const Sidebar: React.FC<SidebarProps> = ({
   setToggleSidebar,
   toggleSidebar,
   isMobile,
