@@ -23,7 +23,7 @@ To get started, clone the repository and install the dependencies.
 
 ```bash
 git clone https://github.com/Chalermkiatjs/code-test-solidi-thai.git
-cd code-test-solidi-thai.git
+cd code-test-solidi-thai or your_folder_name
 npm install 
 # or 
 yarn install 
